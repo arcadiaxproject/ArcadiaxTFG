@@ -1,0 +1,639 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.retro-font {
+    font-family: 'Press Start 2P', cursive;
+  }
+.neon-sign {
+    padding: 20px;
+    border: 4px solid #ffe600;
+    border-radius: 10px;
+    animation: neon-border-glow 1.5s ease-in-out infinite alternate;
+  }
+  
+  /* Animación del borde de neón */
+  @keyframes neon-border-glow {
+    0% {
+      border-color: #ffd700;
+      box-shadow: 0 0 10px #ffe600, 0 0 20px #ffe600, 0 0 30px #ffd700;
+    }
+    100% {
+      border-color: #ffe600;
+      box-shadow: 0 0 20px #ffe600, 0 0 40px #ffd700, 0 0 60px #ffe600;
+    }
+  }
+  .arcade-bg {
+    background: radial-gradient(circle, #2a004f, #000000);
+    animation: arcade-glow 3s infinite alternate;
+  }
+  
+  .text-neon {
+    color: #39FF14;
+    text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14;
+  }
+  
+  @keyframes arcade-glow {
+    0% {
+      background: radial-gradient(circle, #2a004f, #000000);
+    }
+    50% {
+      background: radial-gradient(circle, #3b005b, #000000);
+    }
+    100% {
+      background: radial-gradient(circle, #2a004f, #000000);
+    }
+  }
+  
+
+.font-arcade {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilo de texto neón más suave */
+.glow-text-subtle {
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+}
+
+/* Fondo con textura retro arcade */
+.bg-arcade-pattern {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  background-size: cover;
+}
+
+.font-arcade {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilo de texto neón más suave */
+.glow-text-subtle {
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+}
+
+/* Fondo retro arcade */
+.bg-arcade-pattern {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d0066 100%);
+  background-size: cover;
+  background-blend-mode: overlay;
+  opacity: 0.95;
+}
+body {
+  font-family: 'Press Start 2P', cursive;
+ 
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  
+}
+
+.glow-text {
+  text-shadow: 0 0 10px #FFFF33, 0 0 20px #FFFF33, 0 0 30px #FFFF33;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.grid-lines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cartucho {
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  transition: transform 0.2s;
+}
+
+/* Hover para efecto de videojuego */
+.cartucho:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para PSP */
+.cartucho.psp {
+  background: linear-gradient(135deg, #333, #555);
+  color: #f0f0f0;
+  border: 2px solid #ff0000;
+}
+
+/* Estilo para NDS */
+.cartucho.nds {
+  background: linear-gradient(135deg, #f8f8f8, #ddd);
+  color: #333;
+  border: 2px solid #0077ff;
+}
+
+/* Header del cartucho */
+.cartucho-header {
+  text-align: center;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+/* Imagen del cartucho */
+.cartucho-imagen {
+  width: 80%;
+  height: 60%;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #000;
+}
+
+/* Footer del cartucho */
+.cartucho-footer {
+  text-align: center;
+  font-size: 12px;
+}
+.juegos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #121212;
+}
+/* Estilo de fondo tipo botón arcade con efecto de neón blanco */
+.bg-arcade-button {
+  background-color: #1a1a1a; /* Fondo oscuro */
+  border: 3px solid #ffffff; /* Borde blanco */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 10px #ffffff, 
+    0 0 20px #ffffff, 
+    0 0 30px #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover: Cambia a borde y sombra azul */
+.bg-arcade-button:hover {
+  box-shadow: 
+    0 0 10px #00ccff, 
+    0 0 20px #00ccff, 
+    0 0 30px #00ccff;
+  border-color: #00ccff; /* Cambia el borde a azul claro */
+}
+
+/* Fuente retro arcade sin efecto neón */
+.font-arcade {
+  font-family: 'Press Start 2P', cursive; /* Asegúrate de importar esta fuente desde Google Fonts */
+  font-size: 1.2rem;
+  color: #ffffff; /* Color blanco del texto */
+  transition: color 0.2s ease;
+}
+/* Fondo con cuadrícula negra estilo arcade */
+.arcade-background {
+  background-color: #000;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, #333 25%, #333 26%, transparent 27%, transparent 74%, #333 75%, #333 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, #333 25%, #333 26%, transparent 27%, transparent 74%, #333 75%, #333 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+/* Ajustes adicionales para estilo arcade */
+.text-neon {
+  color: #fff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+}
+
+button {
+  background-color: #000;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+/* Fondo con cuadrícula negra estilo arcade */
+.arcade-background {
+  background-color: #000;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, #111 25%, #111 26%, transparent 27%, transparent 74%, #111 75%, #111 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, #111 25%, #111 26%, transparent 27%, transparent 74%, #111 75%, #111 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+/* Cartel de neón */
+.neon-sign {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+/* Efecto de texto estándar para "8-Bit Club" */
+.retro-font {
+  font-family: 'Press Start 2P', cursive;
+  color: #ffffff;
+}
+
+/* Texto neón para otros elementos */
+.text-neon-blue {
+  color: #00bfff;
+  text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #1e90ff;
+}
+/* Fondo con líneas estilo arcade */
+.grid-lines {
+  background-color: #000;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, #222 25%, #222 26%, transparent 27%, transparent 74%, #222 75%, #222 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, #222 25%, #222 26%, transparent 27%, transparent 74%, #222 75%, #222 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+/* Estilo de título retro arcade */
+.retro-title {
+  font-family: 'Press Start 2P', cursive;
+  color: #ffd700; /* Color dorado */
+  text-shadow: 2px 2px #555;
+}
+
+/* Estilo del texto estándar */
+.text-white {
+  color: #ffffff;
+}
+/* Estilo base para el botón arcade */
+.arcade-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 4px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 4px #111;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto tridimensional */
+.arcade-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px #111;
+}
+
+.arcade-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px #111;
+}
+
+/* Colores de los botones arcade */
+.arcade-blue {
+  background-color: #007acc;
+  border-color: #005f99;
+}
+
+.arcade-green {
+  background-color: #00cc66;
+  border-color: #00994d;
+}
+
+.arcade-red {
+  background-color: #cc3333;
+  border-color: #990000;
+}
+
+.arcade-yellow {
+  background-color: #ffcc00;
+  border-color: #cc9900;
+}
+
+.arcade-white {
+  background-color: #e0e0e0;
+  border-color: #b0b0b0;
+  color: #333;
+}
+/* Estilo de botón de carpeta */
+.folder-btn {
+  display: inline-block;
+  background-color: #ffcc00;
+  border: 2px solid #d4a017;
+  border-radius: 8px;
+  padding: 16px;
+  color: #333;
+  box-shadow: 0 4px #b58900;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.folder-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px #b58900;
+}
+
+.folder-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px #b58900;
+}
+
+/* Contenedor de la imagen */
+.image-container {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen de la consola */
+.consola-image {
+  width: 70%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+/* Fondo con cuadrícula estilo arcade */
+.arcade-background {
+  background-color: #000;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, #222 25%, #222 26%, transparent 27%, transparent 74%, #222 75%, #222 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, #222 25%, #222 26%, transparent 27%, transparent 74%, #222 75%, #222 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+/* Fuente arcade */
+.font-arcade {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Título con estilo retro */
+.text-yellow-400 {
+  color: #ffcc00;
+  text-shadow: 2px 2px #333;
+}
+
+/* Ajuste de la cuadrícula */
+.grid {
+  padding: 1rem;
+}
+.reproduciendo {
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.mensaje-reproduccion {
+  color: #00ff00;
+  font-weight: bold;
+}
+.retro-title {
+  text-shadow: 2px 2px 0 #000, 4px 4px 0 #ff0000, 6px 6px 0 #00ff00;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.text-neon {
+  color: #ffcc00;
+  text-shadow: 0 0 5px #ffcc00, 0 0 10px #ff9900, 0 0 20px #ff6600, 0 0 40px #ff3300;
+}
+
+
+.nes-btn-custom {
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nes-btn-custom:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.4);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-wave {
+  animation: wave 2s infinite;
+}
+
+.animate-wave {
+  animation: wave 2s infinite;
+}
+
+.pattern-dark {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(124, 3, 3, 0) 80%);
+  background-blend-mode: multiply;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(0, 255, 255, 0.1) 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(0, 255, 255, 0.1) 50px
+    );
+  opacity: 0.3;
+}
+@keyframes ecg-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-ecg-loop {
+  animation: ecg-loop 4s linear infinite;
+}
+@keyframes ecg {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-ecg {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: ecg 2s linear infinite;
+}
+
+
+.peliculas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.pelicula-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.pelicula-card:hover {
+  transform: scale(1.1);
+}
+
+.pelicula-imagen {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.pelicula-nombre {
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+.peliculas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.pelicula-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.pelicula-card:hover {
+  transform: scale(1.1);
+}
+
+.pelicula-imagen {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.pelicula-nombre {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Estilo del navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Altura fija del navbar */
+  background-color: #141414;
+  z-index: 1000;
+}
+
+/* Contenedor principal */
+.netflix-container {
+  position: relative;
+  top: 58px; /* Ajustar para empezar justo debajo del navbar */
+  color: #fff;
+  padding: 20px;
+  min-height: calc(100vh - 58px); /* Ajustar altura para evitar scroll */
+  padding: 20px;
+  background-color: #141414;
+  color: #fff;
+}
+
+/* Estilo para el título */
+h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Cuadrícula de películas */
+.peliculas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0;
+}
+
+/* Estilo de las tarjetas de películas */
+.pelicula-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 100%;
+  height: 230px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #141414;
+}
+
+.pelicula-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Imagen de las películas */
+.pelicula-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Título de la película */
+.pelicula-nombre {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+/* Estilo para el título tipo Netflix */
+.titulo-netflix {
+  font-size: 4rem;
+  color: #e50914; /* Rojo característico de Netflix */
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+  font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+}
+
