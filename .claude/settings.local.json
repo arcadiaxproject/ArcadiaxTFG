@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose:*)",
+      "Bash(netstat -ano)",
+      "Bash(findstr 27017)",
+      "Bash(python test_base_repo.py)",
+      "Bash(python -c \"import fastapi, uvicorn, motor, pydantic_settings\")"
+    ]
+  }
+}
