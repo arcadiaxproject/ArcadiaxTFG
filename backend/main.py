@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import settings
-from routes import videogames
+from routes import videogames, films
 
 app = FastAPI(title="ArcadiaX API", version="2.0.0")
 
@@ -14,6 +14,7 @@ app.add_middleware(
 )
 
 app.include_router(videogames.router)
+app.include_router(films.router)
 
 
 @app.get("/health")
