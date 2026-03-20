@@ -19,3 +19,8 @@ dist/
 
 # Docker
 *.log
+
+# Contenido arcade (ROMs, trailers, peliculas — no subir a GitHub)
+arcade/roms/
+arcade/trailers/
+arcade/films/
