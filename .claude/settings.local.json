@@ -12,7 +12,9 @@
       "Bash(npm install:*)",
       "Bash(npm run:*)",
       "Bash(python -c \":*)",
-      "Bash(python -m uvicorn main:app --reload --port 8000)"
+      "Bash(python -m uvicorn main:app --reload --port 8000)",
+      "Bash(curl -s -X PUT http://localhost:8000/films/69bd4a00c177f850dce183ff -H \"Content-Type: application/json\" -d \"{\"\"imagen\"\": \"\"/assets/films/inception.avif\"\"}\")",
+      "Bash(curl -s -X PUT http://localhost:8000/films/69bd4a01c177f850dce18400 -H \"Content-Type: application/json\" -d \"{\"\"imagen\"\": \"\"/assets/films/interestellar.jpg\"\"}\")"
     ]
   }
 }

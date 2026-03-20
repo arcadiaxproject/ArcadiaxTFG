@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from models.film import FilmCreate, FilmResponse
+from models.film import FilmCreate, FilmUpdate, FilmResponse
 from services.film_service import FilmService
 from dependencies import get_film_service
 
@@ -22,6 +22,12 @@ async def get_by_id(id: str, service: FilmService = Depends(get_film_service)):
 async def create(film: FilmCreate, service: FilmService = Depends(get_film_service)):
     """POST /films — Crear una pelicula."""
     return await service.create(film.model_dump())
+
+
+@router.put("/{id}", response_model=FilmResponse)
+async def update(id: str, film: FilmUpdate, service: FilmService = Depends(get_film_service)):
+    """PUT /films/{id} — Actualizar una pelicula."""
+    return await service.update(id, film.model_dump(exclude_none=True))
 
 
 @router.delete("/{id}")

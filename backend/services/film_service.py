@@ -26,6 +26,12 @@ class FilmService:
         data["abierto"] = False
         return await self.repo.create(data)
 
+    async def update(self, id: str, data: dict) -> dict:
+        film = await self.repo.update(id, data)
+        if not film:
+            raise HTTPException(404, f"Pelicula no encontrada: {id}")
+        return film
+
     async def delete(self, id: str) -> bool:
         deleted = await self.repo.delete(id)
         if not deleted:
