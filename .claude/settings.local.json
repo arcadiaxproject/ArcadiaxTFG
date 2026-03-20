@@ -5,7 +5,8 @@
       "Bash(netstat -ano)",
       "Bash(findstr 27017)",
       "Bash(python test_base_repo.py)",
-      "Bash(python -c \"import fastapi, uvicorn, motor, pydantic_settings\")"
+      "Bash(python -c \"import fastapi, uvicorn, motor, pydantic_settings\")",
+      "Bash(python test_playback.py)"
     ]
   }
 }
