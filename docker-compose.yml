@@ -1,0 +1,87 @@
+services:
+
+  # ─────────────────────────────────────────
+  # Base de datos
+  # ─────────────────────────────────────────
+  mongo:
+    image: mongo:7
+    container_name: arcadiax_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-admin}
+      MONGO_INITDB_DATABASE: ${MONGO_DB:-arcadiax}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - arcadiax_net
+
+  # ─────────────────────────────────────────
+  # Message broker
+  # ─────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: arcadiax_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - arcadiax_net
+
+  # ─────────────────────────────────────────
+  # API Backend (FastAPI)
+  # ─────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: arcadiax_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      MONGO_URI: mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-admin}@mongo:27017/${MONGO_DB:-arcadiax}?authSource=admin
+      REDIS_URL: redis://redis:6379
+    volumes:
+      # Peliculas originales (solo lectura en el contenedor)
+      - ${FILMS_PATH:-./media/films}:/media/films:ro
+      # Segmentos HLS generados (lectura/escritura)
+      - hls_data:/media/hls
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - arcadiax_net
+
+  # ─────────────────────────────────────────
+  # Frontend (React → nginx)
+  # ─────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    container_name: arcadiax_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - arcadiax_net
+
+# ─────────────────────────────────────────
+# Volumes y networks
+# ─────────────────────────────────────────
+volumes:
+  mongo_data:
+  hls_data:
+
+networks:
+  arcadiax_net:
+    driver: bridge
