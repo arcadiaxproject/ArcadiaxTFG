@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:8000/videogames/)",
+      "Bash(python -c \"import sys,json; games=json.load\\(sys.stdin\\); [print\\(g[''''_id''''], g[''''nombre'''']\\) for g in games]\")",
+      "Bash(curl -s -X PUT http://localhost:8000/videogames/69bd46b1c177f850dce183fe -H \"Content-Type: application/json\" -d \"{\"\"ubicacion\"\": \"\"arcade/roms/n64/Mario64.n64\"\", \"\"trailer\"\": \"\"arcade/trailers/mario64.mp4\"\"}\")",
+      "Bash(curl -s http://localhost:8000/playback/trailer)",
+      "Bash(curl -s -X POST http://localhost:8000/playback/stop)",
+      "Bash(uvicorn main:app --reload)",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(curl -s -X POST \"http://localhost:8000/playback/game/Mario%2064/n64\")",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(python -c \":*)",
+      "Bash(python -m uvicorn main:app --reload --port 8000)"
+    ]
+  }
+}

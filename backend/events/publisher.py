@@ -15,9 +15,13 @@ class EventPublisher:
         """
         Publica un evento en el canal arcadiax.
         Formato: {"event": "playback.game.play", "data": {"nombre": "Crash", ...}}
+        Si Redis no está disponible, se registra el error pero no interrumpe la operación.
         """
-        message = json.dumps({"event": event, "data": data})
-        await self.redis.publish("arcadiax", message)
+        try:
+            message = json.dumps({"event": event, "data": data})
+            await self.redis.publish("arcadiax", message)
+        except Exception as e:
+            print(f"[EventPublisher] Warning: no se pudo publicar '{event}': {e}")
 
     async def close(self):
         await self.redis.close()

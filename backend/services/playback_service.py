@@ -43,7 +43,8 @@ class PlaybackService:
         await self.events.publish(Events.GAME_PLAY, {
             "nombre": nombre,
             "consola": consola,
-            "ubicacion": game.get("ubicacion", "")
+            "ubicacion": game.get("ubicacion", ""),
+            "trailer": game.get("trailer", "")
         })
         return game
 
