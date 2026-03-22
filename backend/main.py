@@ -1,28 +1,8 @@
+# Asumiendo que el archivo main.py ya existe y contiene la configuración del FastAPI
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from config import settings
-from routes import videogames, films, playback
+from backend.routes.hola import router as hola_router
 
-app = FastAPI(title="ArcadiaX API", version="2.0.0")
+app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(videogames.router)
-app.include_router(films.router)
-app.include_router(playback.router)
-
-
-@app.get("/health")
-async def health():
-    return {"status": "ok", "service": "arcadiax-backend"}
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host=settings.BACKEND_HOST, port=settings.BACKEND_PORT, reload=True)
+# Incluir las rutas adicionales
+app.include_router(hola_router, tags=["Hola"])
