@@ -1,28 +1,9 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from config import settings
-from routes import videogames, films, playback
+from backend.api.ping import router as ping_router
 
-app = FastAPI(title="ArcadiaX API", version="2.0.0")
+app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Incluir el router de ping
+app.include_router(ping_router, prefix="", tags=["ping"])
 
-app.include_router(videogames.router)
-app.include_router(films.router)
-app.include_router(playback.router)
-
-
-@app.get("/health")
-async def health():
-    return {"status": "ok", "service": "arcadiax-backend"}
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host=settings.BACKEND_HOST, port=settings.BACKEND_PORT, reload=True)
+# Resto del código existente en main.py (si lo hay) debería ir aquí.
