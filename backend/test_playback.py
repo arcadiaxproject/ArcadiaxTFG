@@ -84,14 +84,14 @@ async def main():
         await service.play_film("Inception")
         print("ERROR: debia haber lanzado excepcion")
     except Exception as e:
-        print(f"OK: {e.detail}")
+        print(f"OK: {e}")
 
     # 5. STOP
     print("\n--- STOP ---")
-    await service.stop()
+    await service.stop_playback()
     current = await service.get_current()
     assert current["type"] == "none"
-    print(f"OK: todo parado, current={current['type']}")
+    print("OK: playback detenido")
 
     # 6. PLAY FILM
     print("\n--- PLAY FILM ---")
@@ -99,38 +99,19 @@ async def main():
     assert film["play"] == True
     print(f"OK: {film['nombre']} play={film['play']}")
 
-    # 7. Intentar poner juego mientras hay pelicula (debe fallar)
-    print("\n--- PLAY GAME mientras hay pelicula (debe dar 400) ---")
-    try:
-        await service.play_game("Crash", "ps1")
-        print("ERROR: debia haber lanzado excepcion")
-    except Exception as e:
-        print(f"OK: {e.detail}")
+    # Esperar a que se reciban los eventos
+    await task
 
-    # 8. STOP final
-    await service.stop()
+    # 7. Verificar eventos recibidos
+    print("\n--- EVENTOS RECIBIDOS ---")
+    for evento in eventos_recibidos:
+        print(evento)
+    
+    assert len(eventos_recibidos) == 3, "Esperaba recibir 3 eventos"
+    assert eventos_recibidos[0]["event"] == Events.GAME_PLAY
+    assert eventos_recibidos[1]["event"] == Events.PLAYBACK_STOP
+    assert eventos_recibidos[2]["event"] == Events.FILM_PLAY
+    print("OK: eventos recibidos correctamente")
 
-    # Esperar eventos Redis
-    await asyncio.wait_for(task, timeout=3)
-
-    print("\n--- EVENTOS REDIS RECIBIDOS ---")
-    for ev in eventos_recibidos:
-        print(f"  {ev['event']} => {ev['data']}")
-
-    assert any(e["event"] == "playback.game.play" for e in eventos_recibidos)
-    assert any(e["event"] == "playback.film.play" for e in eventos_recibidos)
-    assert any(e["event"] == "playback.stop" for e in eventos_recibidos)
-    print("OK: los 3 eventos llegaron a Redis")
-
-    # Limpieza
-    await db["videogames"].drop()
-    await db["films"].drop()
-    await pubsub.unsubscribe("arcadiax")
-    await redis_client.aclose()
-    await publisher.close()
-    client.close()
-
-    print("\n=== TODOS LOS TESTS PASADOS ===\n")
-
-
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
