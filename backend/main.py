@@ -22,6 +22,10 @@ app.include_router(playback.router)
 async def health():
     return {"status": "ok", "service": "arcadiax-backend"}
 
+@app.get("/holamundo")
+async def holamundo():
+    return {"message": "holamundo"}
+
 
 if __name__ == "__main__":
     import uvicorn
