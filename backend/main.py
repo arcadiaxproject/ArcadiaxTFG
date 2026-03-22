@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import settings
-from routes import videogames, films, playback
+from routes import videogames, films, playback, example  # Añadimos la referencia al nuevo módulo example
 
 app = FastAPI(title="ArcadiaX API", version="2.0.0")
 
@@ -16,7 +16,7 @@ app.add_middleware(
 app.include_router(videogames.router)
 app.include_router(films.router)
 app.include_router(playback.router)
-
+app.include_router(example.router)  # Incluimos el nuevo router example
 
 @app.get("/health")
 async def health():
